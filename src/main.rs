@@ -1,3 +1,7 @@
+use std::env;
+
 fn main() {
-    println!("Hello, world!");
+    if env::args().len() < 3 {
+        print!("Too few arguments!");
+    }
 }
