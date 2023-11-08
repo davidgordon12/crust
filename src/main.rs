@@ -1,24 +1,15 @@
 use std::env;
 
 mod crust;
-use crust::CrustRequest;
 
 fn main() {
-    if env::args().len() != 3 {
+    if env::args().len() != 2 {
         println!("Invalid arguments!");
-        println!("USAGE: crust <method> <url>");
+        println!("USAGE: crust <url>");
         return;
     }
 
     let args: Vec<_> = env::args().collect();
 
-    let req: CrustRequest = CrustRequest::new(
-        args[1].to_string(), 
-        args[2].to_string()
-    );
-
-    let res = req.execute_request();
-
-    println!("{:#?}", res.status());
-    println!("{:#?}", res.text().unwrap());
+    let _res = crust::execute_request(args[1].to_string());
 }
